@@ -36,7 +36,7 @@ export default function ProjectCarousel({ currentSlug, subtitleOverride, titleOv
   if (otherProjects.length === 0) return null;
 
   return (
-    <section ref={containerRef} className="w-full bg-hc-black pt-24 pb-32 border-t border-hc-white/10 overflow-hidden">
+    <section ref={containerRef} className="relative z-20 w-full bg-hc-black pt-24 pb-32 border-t border-hc-white/10 overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
         <p className="font-mono text-sm uppercase tracking-widest text-hc-red mb-4">
