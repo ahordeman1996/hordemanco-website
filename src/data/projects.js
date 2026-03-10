@@ -114,5 +114,50 @@ export const projects = [
         }
       }
     ]
+  },
+  {
+    id: 'the-requiem-acuretopoison',
+    slug: 'the-requiem-a-cure-to-poison-the-world',
+    title: 'The Requiem',
+    subtitle: 'A Cure To Poison The World',
+    client: 'The Requiem',
+    agencyContract: 'Done under DOWNPOUR.DESIGN',
+    tags: ['Art Direction', 'Graphic Design', 'Print Design'],
+    categories: ['Album Artwork', 'Layout Design'],
+    labels: ['/assets/Fearless Records.svg', '/assets/Concord.svg'],
+    thumbnail: '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World Front Cover.webp',
+    modules: [
+      {
+        type: 'JewelcaseDesign',
+        context: `A Cure To Poison The World is the debut studio album by the American post-hardcore band The Requiem. Released on February 16, 2024, through Fearless Records, it has been widely recognized for its heavy "emo revival" sound, heavily influenced by 2000s-era bands like My Chemical Romance, AFI, and The Used.`,
+        prep: `This album was The Reqiuem's breakout into the mainstream and first release through Fearless after rebranding from their previous name, L'exquisite Douleur. It was time to show the world they were serious and make a name for themselves, marking a new chapter both aesthetically with the band as well as in their own personal lives, beginning their move from Florida to LA.`,
+        execution: `The lyrics of the album detail a grim story of Ether Mercury, a drug ravaging the world made by the Red Moon Corporation. Damien's storytelling abilities transcend his lyricism, as the art style was largely led by his vision. The x-ray butterfly cover and stainless steel medical treatment for the logo were his idea, and after being provided his mood board and rough sketches of the vibe for the remainder of the art, we got to work on the booklet. It's always fun to have a more collaborative project like this and really bring another artist's ideas to life, and we could not be more happy with how it all turned out. I look forward to outdoing it with them on the next one.`,
+        images: {
+          frontCover: '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World Front Cover.webp',
+          backCover: '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World Back Cover.webp',
+          insideTray: '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World CD Tray Inside.webp',
+          outsideTray: '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World CD Tray Outside.webp',
+          disc: '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World DISC.webp',
+          bookletPages: [
+            '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World Front Cover.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 2.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 3.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 4.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 5.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 6.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 7.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 8.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 9.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 10.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 11.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 12.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 13.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 14.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A Cure to Poison the World 15.webp',
+            '/images/work/The Requiem/A Cure To Poison The World/A-Cure-to-Poison-the-World Back Cover.webp'
+          ]
+        }
+      }
+    ]
   }
 ];

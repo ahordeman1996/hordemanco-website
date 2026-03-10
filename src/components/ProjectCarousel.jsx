@@ -9,19 +9,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectCarousel({ currentSlug, subtitleOverride, titleOverride }) {
   const containerRef = useRef(null);
-  
-  // Filter out the current project to easily show "others"
-  const otherProjects = projects.filter(p => p.slug !== currentSlug);
+
+  // Filter out the current project and randomize the order
+  const otherProjects = [...projects]
+    .filter(p => p.slug !== currentSlug)
+    .sort(() => 0.5 - Math.random());
+
+  // Duplicate for seamless looping
+  const loopingProjects = [...otherProjects, ...otherProjects];
 
   useEffect(() => {
     let ctx = gsap.context(() => {
+      // Entrance animation
       gsap.fromTo('.carousel-item',
         { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1,
-          stagger: 0.15,
+          stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
@@ -29,6 +35,18 @@ export default function ProjectCarousel({ currentSlug, subtitleOverride, titleOv
           }
         }
       );
+
+      // Infinite loop strictly applied globally now
+      const carouselInner = document.querySelector('.carousel-inner');
+      if (carouselInner) {
+        gsap.to(carouselInner, {
+          xPercent: -50,
+          ease: 'none',
+          duration: 60, // Slow, ambient loop speed
+          repeat: -1
+        });
+      }
+
     }, containerRef);
     return () => ctx.revert();
   }, [currentSlug, otherProjects]);
@@ -37,7 +55,7 @@ export default function ProjectCarousel({ currentSlug, subtitleOverride, titleOv
 
   return (
     <section ref={containerRef} className="relative z-20 w-full bg-hc-black pt-24 pb-32 border-t border-hc-white/10 overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
         <p className="font-mono text-sm uppercase tracking-widest text-hc-red mb-4">
           {subtitleOverride || "Continue the Sequence"}
@@ -48,19 +66,19 @@ export default function ProjectCarousel({ currentSlug, subtitleOverride, titleOv
       </div>
 
       {/* Horizontal Scroll Layout for Carousel */}
-      <div className="w-full overflow-x-auto pb-12 hide-scrollbar">
-        <div className="flex gap-8 px-6 md:px-12 w-max mx-auto md:mx-0 max-w-7xl">
-          {otherProjects.map((project, i) => (
-            <Link 
-              to={`/work/${project.slug}`} 
-              key={i} 
+      <div className="w-full overflow-x-auto overflow-y-hidden pb-12 hide-scrollbar">
+        <div className="carousel-inner flex gap-8 px-6 md:px-0 w-max mx-auto md:mx-0">
+          {loopingProjects.map((project, i) => (
+            <Link
+              to={`/work/${project.slug}`}
+              key={i}
               className="carousel-item group block relative w-[85vw] md:w-[28rem] aspect-[4/5] bg-hc-white/5 border border-hc-white/10 hover:border-hc-white/20 transition-colors duration-500 overflow-hidden interactive flex-shrink-0"
             >
-              
+
               <div className="absolute inset-0 z-0">
-                <img 
-                  src={project.thumbnail} 
-                  alt={project.title} 
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
                   className="w-full h-full object-cover filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-hc-black via-hc-black/50 to-transparent"></div>
@@ -80,7 +98,8 @@ export default function ProjectCarousel({ currentSlug, subtitleOverride, titleOv
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }
