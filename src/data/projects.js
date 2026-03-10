@@ -121,7 +121,7 @@ export const projects = [
     title: 'The Requiem',
     subtitle: 'A Cure To Poison The World',
     client: 'The Requiem',
-    agencyContract: 'Done under DOWNPOUR.DESIGN',
+    agencyContract: 'Done under alias DOWNPOUR.DESIGN',
     tags: ['Art Direction', 'Graphic Design', 'Print Design'],
     categories: ['Album Artwork', 'Layout Design'],
     labels: ['/assets/Fearless Records.svg', '/assets/Concord.svg'],
