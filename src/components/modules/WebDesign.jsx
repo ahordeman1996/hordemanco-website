@@ -11,11 +11,11 @@ export default function WebDesign({ data }) {
     let ctx = gsap.context(() => {
       gsap.fromTo('.web-reveal',
         { y: 40, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1, 
-          stagger: 0.15, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
@@ -23,7 +23,7 @@ export default function WebDesign({ data }) {
           }
         }
       );
-      
+
       gsap.fromTo('.image-reveal',
         { scale: 0.95, opacity: 0 },
         {
@@ -43,7 +43,7 @@ export default function WebDesign({ data }) {
 
   return (
     <section ref={containerRef} className="w-full pb-32">
-      
+
       {/* 1. Context / Issue */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-32">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
@@ -67,26 +67,28 @@ export default function WebDesign({ data }) {
       )}
 
       {/* 2. Planning / Preparation - Broken Grid Layout */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-32">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          <div className="md:col-span-12 web-reveal mb-8">
-            <h3 className="font-heading text-4xl uppercase tracking-tighter text-hc-white">02 // Preparation</h3>
-          </div>
-          <div className="md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 font-mono text-lg md:text-xl lg:text-2xl text-hc-white/90 leading-relaxed font-light web-reveal whitespace-pre-wrap">
-            <div className="border-l-[3px] border-hc-red pl-8 md:pl-12 py-4">
-              {data.prep}
+      {data.prep && (
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-12 web-reveal mb-8">
+              <h3 className="font-heading text-4xl uppercase tracking-tighter text-hc-white">02 // Preparation</h3>
+            </div>
+            <div className="md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 font-mono text-lg md:text-xl lg:text-2xl text-hc-white/90 leading-relaxed font-light web-reveal whitespace-pre-wrap">
+              <div className="border-l-[3px] border-hc-red pl-8 md:pl-12 py-4">
+                {data.prep}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Secondary Gallery Item 1 w/ Mobile Overlay Optional */}
-      {data.images.gallery && data.images.gallery[0] && (
+      {data.images?.gallery && data.images.gallery[0] && (
         <div className={`max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-32 relative ${data.images.mobileOverlay ? 'pb-12 md:pb-24' : ''}`}>
           <div className="w-full lg:w-[85%] relative image-reveal z-0">
             <img src={data.images.gallery[0]} alt="Project Gallery 1 Desktop" className="w-full h-auto object-contain border border-hc-white/10 rounded-[1rem] md:rounded-[2rem]" />
           </div>
-          
+
           {/* Overlapping Mobile Frame */}
           {data.images.mobileOverlay && (
             <div className="w-[45%] md:w-[25%] absolute bottom-[-5%] right-[5%] md:right-[15%] z-10 image-reveal">
@@ -97,20 +99,24 @@ export default function WebDesign({ data }) {
       )}
 
       {/* 3. Execution - Asymmetrical Sticky Layout */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-32 relative">
-        <div className="flex flex-col md:flex-row gap-12 items-start justify-between">
-          <div className="md:w-1/3 web-reveal sticky top-32">
-            <h3 className="font-heading text-4xl lg:text-5xl uppercase tracking-tighter text-hc-red mb-2">03 // Execution</h3>
-            <p className="font-mono text-xs uppercase tracking-widest text-hc-white/40 mb-8 border-b border-hc-white/10 pb-4 inline-block">Final Deployment Phase</p>
-          </div>
-          <div className="md:w-3/5 font-mono text-base md:text-xl text-hc-white/90 leading-relaxed font-light web-reveal whitespace-pre-wrap">
-            {data.execution}
+      {data.execution && (
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-24 md:mb-32 relative">
+          <div className="flex flex-col md:flex-row gap-12 items-start justify-between">
+            <div className="md:w-1/3 web-reveal sticky top-32">
+              <h3 className="font-heading text-4xl lg:text-5xl uppercase tracking-tighter text-hc-red mb-2">
+                {data.prep ? "03 // Execution" : "02 // Execution"}
+              </h3>
+              <p className="font-mono text-xs uppercase tracking-widest text-hc-white/40 mb-8 border-b border-hc-white/10 pb-4 inline-block">Final Deployment Phase</p>
+            </div>
+            <div className="md:w-3/5 font-mono text-base md:text-xl text-hc-white/90 leading-relaxed font-light web-reveal whitespace-pre-wrap">
+              {data.execution}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Remaining Gallery Items */}
-      {data.images.gallery && data.images.gallery.length > 1 && (
+      {data.images?.gallery && data.images.gallery.length > 1 && (
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-wrap justify-center gap-8 md:gap-16 gap-y-24">
           {data.images.gallery.slice(1).map((img, i) => {
             const isMobile = img.toLowerCase().includes('mobile');
@@ -120,7 +126,7 @@ export default function WebDesign({ data }) {
 
             return (
               <div key={i} className={`relative image-reveal ${isMobile ? mobileClasses : desktopClasses}`}>
-                <img src={img} alt={`Project Execution ${i+2}`} className={`w-full h-auto object-contain ${isMobile ? 'border border-hc-white/10 rounded-[1rem] md:rounded-[2rem]' : ''}`} />
+                <img src={img} alt={`Project Execution ${i + 2}`} className={`w-full h-auto object-contain ${isMobile ? 'border border-hc-white/10 rounded-[1rem] md:rounded-[2rem]' : ''}`} />
               </div>
             );
           })}
